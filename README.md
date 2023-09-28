@@ -1,3 +1,7 @@
+AI Chat Application build with React framework. 
+Tech Stack:- Firebase, HTML, CSS, React, JS, Tailwind CSS
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,2 +1,0 @@
-# my-friday
-AI chat
