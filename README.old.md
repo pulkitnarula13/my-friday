@@ -1,0 +1,2 @@
+# my-friday
+AI chat
