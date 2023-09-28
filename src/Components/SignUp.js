@@ -1,9 +1,15 @@
-import React, { useRef } from 'react';
+// src/components/SignUp.js
+
+import React, { useRef, useState } from 'react';
 import { auth } from '../Firebase';
+import { useHistory } from 'react-router-dom'; // Import useHistory
 
 function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();
+    const history = useHistory(); // Initialize useHistory
+
+    const [userEmail, setUserEmail] = useState('');
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -14,6 +20,8 @@ function SignUp() {
         try {
         await auth.createUserWithEmailAndPassword(email, password);
         // User is signed up successfully
+        setUserEmail(email); // Store the user's email
+        history.push('/welcome'); // Navigate to the welcome page
         } catch (error) {
         console.error('Error signing up:', error.message);
         }
