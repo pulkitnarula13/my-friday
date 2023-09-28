@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { auth } from '../Firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignUp() {
     const emailRef = useRef();
@@ -7,15 +8,17 @@ function SignUp() {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-
+        console.log(auth);
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-
+        console.log(email + " " + password);
         try {
-        await auth.createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(auth,email, password).then((userCredential) => {
+            console.log(userCredential);
+        });
         // User is signed up successfully
         } catch (error) {
-        console.error('Error signing up:', error.message);
+        console.error('Error signing up:', error);
         }
     };
 
