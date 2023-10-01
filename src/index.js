@@ -1,34 +1,36 @@
 // src/index.js
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route,Routes,Outlet } from 'react-router-dom';
-import App from './App';
-import SignUp from './Components/SignUp';
-import Welcome from './Components/Welcome';
-import { BubblyContainer,BubblyLink } from "react-bubbly-transitions";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import { BubblyContainer, BubblyLink } from "react-bubbly-transitions";
+import Landing from "./Components/Landing";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
 
 ReactDOM.render(
-  
   <BrowserRouter>
-  <BubblyContainer />
-  <Routes>
-    <Route
-      path="/"
-      element={
-        <>
-          <BubblyLink to="/">SignUp</BubblyLink>
-          <BubblyLink to="/welcome">Login</BubblyLink>
-          <Outlet />
-        </>
-      }
-    >
-     
-      <Route path="/" element={<SignUp />} />
-      <Route path="/welcome" element={< Welcome/>} />
-      <Route path="*" element={<>No Match</>} />
-    </Route>
-  </Routes>
-</BrowserRouter>,
-  document.getElementById('root')
+    <BubblyContainer />
+    <Routes>
+      <Route path="/" exact element={<Landing />} />
+
+      <Route
+        path="/"
+        element={
+          <>
+            <BubblyLink colorStart="#3498DA" to="/">
+              Landing
+            </BubblyLink>
+
+            <Outlet />
+          </>
+        }
+      >
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/signup" exact element={<SignUp />} />
+        <Route path="*" element={<>No Match</>} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
