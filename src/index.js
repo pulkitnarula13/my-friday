@@ -1,17 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes,Outlet } from 'react-router-dom';
+
 import App from './App';
 import SignUp from './Components/SignUp';
 import Welcome from './Components/Welcome';
+import { BubblyContainer,BubblyLink } from "react-bubbly-transitions";
 
 ReactDOM.render(
-  <Router>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/welcome" element={<Welcome />} />
-    </Routes>
-  </Router>,
+  
+  <BrowserRouter>
+  <BubblyContainer />
+  <Routes>
+    <Route
+      path="/"
+      element={
+        <>
+          <BubblyLink to="/">SignUp</BubblyLink>
+          <BubblyLink to="/welcome">Login</BubblyLink>
+          <Outlet />
+        </>
+      }
+    >
+     
+      <Route path="/" element={<SignUp />} />
+      <Route path="/welcome" element={< Welcome/>} />
+      <Route path="*" element={<>No Match</>} />
+    </Route>
+  </Routes>
+</BrowserRouter>,
+
   document.getElementById('root')
 );

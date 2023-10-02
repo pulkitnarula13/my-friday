@@ -6,6 +6,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();
+
     const navigate = useNavigate(); // Initialize useNavigate
 
     const [userEmail, setUserEmail] = useState('');
