@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { auth } from '../Firebase';
-import { useHistory } from 'react-router-dom'; // Import useHistory
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 function SignUp() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    // const history = useHistory(); // Initialize useHistory
+
+    const navigate = useNavigate(); // Initialize useNavigate
 
     const [userEmail, setUserEmail] = useState('');
 
@@ -22,7 +23,7 @@ function SignUp() {
         });
         // User is signed up successfully
         setUserEmail(email); // Store the user's email
-        history.push('/welcome'); // Navigate to the welcome page
+        navigate('/welcome'); // Navigate to the welcome page
         } catch (error) {
         console.error('Error signing up:', error);
         }
