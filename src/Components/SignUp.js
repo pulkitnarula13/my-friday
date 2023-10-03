@@ -17,11 +17,12 @@ function SignUp() {
         const password = passwordRef.current.value;
         console.log(email + " " + password);
         try {
-        await createUserWithEmailAndPassword(auth,email, password).then((userCredential) => {
+        await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
             console.log(userCredential);
         });
         // User is signed up successfully
         setUserEmail(email); // Store the user's email
+        console.log("User is signed up successfully")
         navigate('/welcome'); // Navigate to the welcome page
         } catch (error) {
         console.error('Error signing up:', error);
